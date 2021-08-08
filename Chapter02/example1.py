@@ -49,8 +49,9 @@ def concurrent_solve(n_workers):
     print('Took: %.4f seconds.' % duration)
 
 
-input = [i for i in range(10 ** 13, 10 ** 13 + 1000)]
+if __name__ == '__main__':
+    input = [i for i in range(10 ** 13, 10 ** 13 + 1000)]
 
-for n_workers in range(1, multiprocessing.cpu_count() + 1):
-    concurrent_solve(n_workers)
-    print('_' * 20)
+    for n_workers in range(1, multiprocessing.cpu_count() + 1):
+        concurrent_solve(n_workers)
+        print('_' * 20)
