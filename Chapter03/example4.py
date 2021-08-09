@@ -2,6 +2,7 @@
 
 import threading
 import time
+from os import system, name
 
 class MyThread(threading.Thread):
     def __init__(self, name, delay):
@@ -24,16 +25,27 @@ def thread_count_down(name, delay):
         print('Thread %s counting down: %i...' % (name, counter))
         counter -= 1
 
-thread_lock = threading.Lock()
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-thread1 = MyThread('A', 0.5)
-thread2 = MyThread('B', 0.5)
+if __name__ == '__main__':  
+    thread_lock = threading.Lock()
 
-thread1.start()
-thread2.start()
+    thread1 = MyThread('A', 0.5)
+    thread2 = MyThread('B', 0.5)
 
-thread1.join()
-thread2.join()
+    thread1.start()
+    thread2.start()
 
+    thread1.join()
+    thread2.join()
 
-print('Finished.')
+    print('Finished.')
