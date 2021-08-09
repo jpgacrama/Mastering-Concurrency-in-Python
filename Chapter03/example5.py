@@ -47,6 +47,7 @@ def clear():
         _ = system('clear')
 
 if __name__ == '__main__':  
+    clear()
     # setting up variables
     input_ = [1, 10, 4, 3]
 
