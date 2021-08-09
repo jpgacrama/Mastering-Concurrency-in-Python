@@ -3,7 +3,7 @@
 import queue
 import threading
 import time
-
+from os import system, name
 
 class MyThread(threading.Thread):
     def __init__(self, name):
@@ -35,28 +35,39 @@ def print_factors(x):
 
     print(result_string)
 
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-# setting up variables
-input_ = [1, 10, 4, 3]
+if __name__ == '__main__':  
+    # setting up variables
+    input_ = [1, 10, 4, 3]
 
-# filling the queue
-my_queue = queue.Queue()
-for x in input_:
-    my_queue.put(x)
+    # filling the queue
+    my_queue = queue.Queue()
+    for x in input_:
+        my_queue.put(x)
 
 
-# initializing and starting 3 threads
-thread1 = MyThread('A')
-thread2 = MyThread('B')
-thread3 = MyThread('C')
+    # initializing and starting 3 threads
+    thread1 = MyThread('A')
+    thread2 = MyThread('B')
+    thread3 = MyThread('C')
 
-thread1.start()
-thread2.start()
-thread3.start()
+    thread1.start()
+    thread2.start()
+    thread3.start()
 
-# joining all 3 threads
-thread1.join()
-thread2.join()
-thread3.join()
+    # joining all 3 threads
+    thread1.join()
+    thread2.join()
+    thread3.join()
 
-print('Done.')
+    print('Done.')
