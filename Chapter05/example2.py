@@ -1,6 +1,7 @@
 # ch05/example2.py
 
 import requests
+from os import system, name
 
 def ping(url):
     res = requests.get(url)
@@ -15,7 +16,21 @@ urls = [
     'http://httpstat.us/524'
 ]
 
-for url in urls:
-    ping(url)
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-print('Done.')
+if __name__ == '__main__':  
+    clear()
+
+    for url in urls:
+        ping(url)
+
+    print('Done.')
