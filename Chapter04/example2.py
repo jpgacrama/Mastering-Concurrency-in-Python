@@ -35,8 +35,8 @@ if __name__ == '__main__':
     data = []
 
     try:
-        get_data_from_file_v1('output2/sample0.txt')
-        #get_data_from_file_v2('output2/sample0.txt')
+        # get_data_from_file_v1('output2/sample0.txt')
+        get_data_from_file_v2('output2/sample0.txt')
     except FileNotFoundError:
         print('File could not be found...')
 
