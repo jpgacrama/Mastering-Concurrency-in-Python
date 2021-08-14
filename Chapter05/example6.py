@@ -3,6 +3,7 @@
 import threading
 import requests
 import time
+from os import system, name
 
 UPDATE_INTERVAL = 0.01
 
@@ -18,7 +19,7 @@ class MyThread(threading.Thread):
 
 def process_requests(threads, timeout=5):
     def alive_count():
-        alive = [1 if thread.isAlive() else 0 for thread in threads]
+        alive = [1 if thread.is_alive() else 0 for thread in threads]
         return sum(alive)
 
     while alive_count() > 0 and timeout > 0:
@@ -34,14 +35,28 @@ urls = [
     'http://httpstat.us/400'
 ]
 
-start = time.time()
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-threads = [MyThread(url) for url in urls]
-for thread in threads:
-    thread.setDaemon(True)
-    thread.start()
-process_requests(threads)
+if __name__ == '__main__':  
+    clear()
 
-print(f'Took {time.time() - start : .2f} seconds')
+    start = time.time()
 
-print('Done.')
+    threads = [MyThread(url) for url in urls]
+    for thread in threads:
+        thread.setDaemon(True)
+        thread.start()
+    process_requests(threads)
+
+    print(f'Took {time.time() - start : .2f} seconds')
+
+    print('Done.')
