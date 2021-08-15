@@ -3,7 +3,7 @@
 from multiprocessing import Process, current_process
 import time
 import os
-
+from os import system, name
 
 def print_info(title):
     print(title)
@@ -21,8 +21,18 @@ def f():
     time.sleep(1)
     print('Exiting process %s...' % pname)
 
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 if __name__ == '__main__':
+    clear()
     print_info('Main program')
 
     p = Process(target=f)

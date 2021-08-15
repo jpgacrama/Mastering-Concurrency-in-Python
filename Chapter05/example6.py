@@ -57,6 +57,9 @@ if __name__ == '__main__':
         thread.start()
     process_requests(threads)
 
+    for thread in threads:
+        thread.join()
+
     print(f'Took {time.time() - start : .2f} seconds')
 
     print('Done.')
