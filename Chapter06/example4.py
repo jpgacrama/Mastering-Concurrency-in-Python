@@ -17,7 +17,6 @@ def f2():
     print('Exiting process %s, ID %s...' % (p.name, p.pid))
 
 def clear():
-  
     # for windows
     if name == 'nt':
         _ = system('cls')
@@ -27,6 +26,7 @@ def clear():
         _ = system('clear')
 
 if __name__ == '__main__':
+    clear()
     p1 = Process(name='Worker 1', target=f1)
     p1.daemon = True
     p2 = Process(name='Worker 2', target=f2)
