@@ -2,6 +2,7 @@
 
 from math import sqrt
 import multiprocessing
+from os import system, name
 
 class Consumer(multiprocessing.Process):
 
@@ -46,6 +47,17 @@ class Task():
 
     def __str__(self):
         return 'Checking if %i is a prime or not.' % self.x
+
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
 if __name__ == '__main__':
 
