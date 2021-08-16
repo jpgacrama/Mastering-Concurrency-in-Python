@@ -1,15 +1,29 @@
 # ch05/example1.py
 
 import requests
+from os import system, name
 
-url = 'http://www.google.com'
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-res = requests.get(url)
+if __name__ == '__main__':  
+    clear()
+    url = 'http://www.google.com'
 
-print(res.status_code)
-print(res.headers)
+    res = requests.get(url)
 
-with open('google.html', 'w') as f:
-    f.write(res.text)
+    print(res.status_code)
+    print(res.headers)
 
-print('Done.')
+    with open('google.html', 'w') as f:
+        f.write(res.text)
+
+    print('Done.')
