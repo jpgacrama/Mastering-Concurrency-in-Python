@@ -3,6 +3,7 @@
 import threading
 import requests
 import time
+from os import system, name
 
 class MyThread(threading.Thread):
     def __init__(self, url):
@@ -23,16 +24,30 @@ urls = [
     'http://httpstat.us/524'
 ]
 
-start = time.time()
+# define our clear function
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
-threads = [MyThread(url) for url in urls]
-for thread in threads:
-    thread.start()
-for thread in threads:
-    thread.join()
-for thread in threads:
-    print(thread.result)
+if __name__ == '__main__':  
+    clear()
 
-print(f'Took {time.time() - start : .2f} seconds')
+    start = time.time()
 
-print('Done.')
+    threads = [MyThread(url) for url in urls]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    for thread in threads:
+        print(thread.result)
+
+    print(f'Took {time.time() - start : .2f} seconds')
+
+    print('Done.')
