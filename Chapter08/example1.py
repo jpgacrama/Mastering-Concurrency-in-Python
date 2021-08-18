@@ -2,7 +2,6 @@
 
 import cv2
 import os
-from Chapter08 import *
 
 # define our clear function
 def clear():
@@ -20,9 +19,9 @@ if __name__ == '__main__':
     cwd = os.getcwd()
     
     if os.name == 'nt':
-        im = cv2.imread(os.path.join(cwd, 'input\ship.jpg'))
+        im = cv2.imread(os.path.join(cwd, 'Chapter08\input\ship.jpg'))
     else:
-        im = cv2.imread(os.path.join(cwd, 'input/ship.jpg'))
+        im = cv2.imread(os.path.join(cwd, 'Chapter08/input/ship.jpg'))
     
     cv2.imshow('Test', im)
     cv2.waitKey(0) # press any key to move forward here
