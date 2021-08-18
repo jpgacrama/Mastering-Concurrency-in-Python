@@ -1,22 +1,29 @@
 # ch8/example1.py
 
 import cv2
-from os import system, name
+import os
+from Chapter08 import *
 
 # define our clear function
 def clear():
   
     # for windows
-    if name == 'nt':
-        _ = system('cls')
+    if os.name == 'nt':
+        _ = os.system('cls')
   
     # for mac and linux(here, os.name is 'posix')
     else:
-        _ = system('clear')
+        _ = os.system('clear')
 
 if __name__ == '__main__':
     clear()
-    im = cv2.imread('input/ship.jpg')
+    cwd = os.getcwd()
+    
+    if os.name == 'nt':
+        im = cv2.imread(os.path.join(cwd, 'input\ship.jpg'))
+    else:
+        im = cv2.imread(os.path.join(cwd, 'input/ship.jpg'))
+    
     cv2.imshow('Test', im)
     cv2.waitKey(0) # press any key to move forward here
 
