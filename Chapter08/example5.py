@@ -1,5 +1,6 @@
 from multiprocessing import Pool
 import cv2
+import os
 
 import sys
 from timeit import default_timer as timer
@@ -20,7 +21,19 @@ def process_threshold(im, output_name, thresh_method):
     cv2.imwrite(OUTPUT_PATH + output_name, thresh_im)
 
 
+# define our clear function
+def clear():
+  
+    # for windows
+    if os.name == 'nt':
+        _ = os.system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = os.system('clear')
+
 if __name__ == '__main__':
+    clear()
 
     for n_processes in range(1, 7):
         start = timer()

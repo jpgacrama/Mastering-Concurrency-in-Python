@@ -7,6 +7,8 @@ from timeit import default_timer as timer
 
 
 THRESH_METHOD = cv2.ADAPTIVE_THRESH_GAUSSIAN_C
+
+# Reference this from cwd()
 INPUT_PATH = 'input/large_input/'
 OUTPUT_PATH = 'output/large_output/'
 
