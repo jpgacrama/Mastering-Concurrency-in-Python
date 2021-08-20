@@ -30,9 +30,9 @@ def clear():
     if os.name == 'nt':
         _ = os.system('cls')
         global INPUT_PATH, OUTPUT_PATH
-
-        INPUT_PATH = '.\\input\\large_input\\'
-        OUTPUT_PATH = '.\\output\\large_output\\'        
+        cwd = os.getcwd()
+        INPUT_PATH = os.path.join(cwd, 'Chapter08\\input\\large_input\\')
+        OUTPUT_PATH = os.path.join(cwd, 'Chapter08\\output\\large_output\\')
   
     # for mac and linux(here, os.name is 'posix')
     else:
@@ -41,11 +41,6 @@ def clear():
 if __name__ == '__main__':
     clear()
     
-    for name in names:
-        test = cv2.imread(INPUT_PATH + name)
-        if not test:
-            print(f'{INPUT_PATH + name} does not exist')
-
     for n_processes in range(1, 7):        
         start = timer()
 
