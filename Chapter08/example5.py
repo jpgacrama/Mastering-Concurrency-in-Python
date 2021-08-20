@@ -5,6 +5,8 @@ import os
 import sys
 from timeit import default_timer as timer
 
+sys.path.append(os.getcwd())
+from Chapter08 import *
 
 THRESH_METHOD = cv2.ADAPTIVE_THRESH_GAUSSIAN_C
 INPUT_PATH = 'input/large_input/'
@@ -27,6 +29,10 @@ def clear():
     # for windows
     if os.name == 'nt':
         _ = os.system('cls')
+        global INPUT_PATH, OUTPUT_PATH
+
+        INPUT_PATH = '.\\input\\large_input\\'
+        OUTPUT_PATH = '.\\output\\large_output\\'        
   
     # for mac and linux(here, os.name is 'posix')
     else:
@@ -34,8 +40,13 @@ def clear():
 
 if __name__ == '__main__':
     clear()
+    
+    for name in names:
+        test = cv2.imread(INPUT_PATH + name)
+        if not test:
+            print(f'{INPUT_PATH + name} does not exist')
 
-    for n_processes in range(1, 7):
+    for n_processes in range(1, 7):        
         start = timer()
 
         with Pool(n_processes) as p:
