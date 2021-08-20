@@ -1,7 +1,6 @@
 from multiprocessing import Pool
 import cv2
 import os
-
 import sys
 from timeit import default_timer as timer
 
