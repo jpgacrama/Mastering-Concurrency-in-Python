@@ -23,8 +23,7 @@ def process_threshold(im, output_name, thresh_method):
     cv2.imwrite(OUTPUT_PATH + output_name, thresh_im)
 
 
-# define our clear function
-def clear():
+def osFunctions():
   
     # for windows
     if os.name == 'nt':
@@ -39,7 +38,7 @@ def clear():
         _ = os.system('clear')
 
 if __name__ == '__main__':
-    clear()
+    osFunctions()
     
     for n_processes in range(1, 7):        
         start = timer()
