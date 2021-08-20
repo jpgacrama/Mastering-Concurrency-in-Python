@@ -24,7 +24,7 @@ if __name__ == '__main__':
     for filename in ['obama1.jpeg', 'obama2.jpg']:
         im = cv2.imread(thismodule.INPUT_PATH + filename)
         gray_im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(im)
+        faces = face_cascade.detectMultiScale(im, scaleFactor=1.2)
 
         for (x, y, w, h) in faces:
             cv2.rectangle(im, (x, y), (x + w, y + h), (0, 255, 0), 2)
