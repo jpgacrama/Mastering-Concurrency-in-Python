@@ -2,6 +2,7 @@
 
 from math import sqrt
 import asyncio
+from os import system, name
 
 async def is_prime(x):
     print('Processing %i...' % x)
@@ -26,6 +27,16 @@ async def is_prime(x):
 
         print('%i is a prime number.' % x)
 
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+
 async def main():
 
     task1 = loop.create_task(is_prime(9637529763296797))
@@ -35,6 +46,7 @@ async def main():
     await asyncio.wait([task1, task2, task3])
 
 if __name__ == '__main__':
+    clear()
     try:
         loop = asyncio.get_event_loop()
         loop.run_until_complete(main())
