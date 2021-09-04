@@ -1,6 +1,7 @@
 # ch9/example1.py
 
 from math import sqrt
+from os import system, name
 
 def is_prime(x):
     print('Processing %i...' % x)
@@ -23,8 +24,17 @@ def is_prime(x):
 
         print('%i is a prime number.' % x)
 
-if __name__ == '__main__':
+def clear():
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
 
+if __name__ == '__main__':
+    clear()
     is_prime(9637529763296797)
     is_prime(427920331)
     is_prime(157)
