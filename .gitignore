@@ -8,3 +8,7 @@ google.html
 Chapter08/output/large_output/
 
 Chapter11/output/
+
+Chapter16/.vscode/
+
+Chapter16/__pycache__/
