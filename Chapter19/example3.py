@@ -24,4 +24,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         pass
 
-scheduler.shutdown()
+    scheduler.shutdown()
